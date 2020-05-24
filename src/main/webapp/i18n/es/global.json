@@ -133,7 +133,8 @@
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
-    }
+    },
+    "signin":"Por favor inicia sesión para disfrutar las opciones!"
   },
-  "footer": "Pie de página"
+  "footer": "Powered by Mitvo for RealPage"
 }

@@ -1,0 +1,15 @@
+{
+    "tvmaze":{
+        "show":"Show",
+        "description":"Description",
+        "summary":"Summary",
+        "season":"Season",
+        "genre":"Genre",
+        "channel":"Channel",
+        "cast":"Cast",
+        "schedule":"Schedule",
+        "rating":"Rating",
+        "language":"Language",
+        "network":"Network"
+    }
+}

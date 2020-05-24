@@ -1,0 +1,15 @@
+{
+    "tvmaze":{
+        "show":"Programa",
+        "description":"Descripción",
+        "summary":"Resumen",
+        "season":"Temporada",
+        "genre":"Genero",
+        "channel":"Canal",
+        "cast":"Elenco",
+        "schedule":"Calendario",
+        "rating":"Calificación",
+        "language":"Lenguaje",
+        "network":"Canal"
+    }
+}
