@@ -10,6 +10,14 @@
         "schedule":"Calendario",
         "rating":"Calificación",
         "language":"Lenguaje",
-        "network":"Canal"
+        "network":"Canal",
+        "updated-shows":"Ultimos episodios",
+        "seasons":"Temporadas",
+        "episode":"Episodio",
+        "airdate":"Fecha",
+        "number":"Número",
+        "full-name":"Nombre",
+        "birthday":"Cumpleaños",
+        "character":"Personaje"
     }
 }

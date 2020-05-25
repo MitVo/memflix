@@ -10,6 +10,14 @@
         "schedule":"Schedule",
         "rating":"Rating",
         "language":"Language",
-        "network":"Network"
+        "network":"Network",
+        "updated-shows":"Updated shows",
+        "seasons":"Seasons",
+        "episode":"Episode",
+        "airdate":"Airdate",
+        "number":"Number",
+        "full-name":"Full name",
+        "birthday":"Birthday",
+        "character":"Character"
     }
 }

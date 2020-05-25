@@ -21,8 +21,34 @@
                     jhiTranslate="global.messages.info.register.link">Register a new account</a>
             </div>
         </div>
+
+        <div class="card" *ngIf="isAuthenticated()==true">
+            <div class="card-body">
+                <h4 class="card-title" jhiTranslate="home.filter-by">Search by</h4>
+                <div class="input-group mb-12">
+                    <div class="col-md-3">
+                        <input type="date" class="form-control" name="date" [(ngModel)]="date" (ngModelChange)="schedule()" />
+                    </div>
+                    <div class="col-md-4">
+                        <form name="form" role="form" (ngSubmit)="filteringBy()" [formGroup]="searchingForm">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <input class="form-control form-control-md" type="text" placeholder="Type here" id="inputKey" formControlName="inputKey">
+                                </div>                        
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <fa-icon icon="search"></fa-icon>&nbsp;<span jhiTranslate="entity.action.search">Search</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>                
+                
+
+            </div>
+        </div>
         <jhi-alert></jhi-alert>
-        <div class="table-responsive" *ngIf="todayEpisodes" >
+        <div *ngIf="shows?.length === 0">Noting to show</div>
+        <div class="table-responsive" *ngIf="shows">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -35,21 +61,22 @@
                         <th *ngIf="isAuthenticated()==true"></th>
                     </tr>
                 </thead>
-                <tbody *ngIf="todayEpisodes">
-                    <tr *ngFor="let ep of todayEpisodes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                <tbody *ngIf="shows">
+                    <tr
+                        *ngFor="let ep of shows | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ; let i = index">
                         <td>
-                            <img style="height: 190px; width: 100%; display: block;" src="{{ep.show.image.medium}}"
+                            <img style="height: 190px; width: 100%; display: block;" src="{{ep.show?.image?.medium}}"
                                 alt="Card image">
                         </td>
                         <td>{{ ep.show.name }}</td>
-                        <td>{{ ep.show.genres }}</td>
-                        <td>{{ ep.show.network.name }}</td>
-                        <td>{{ ep.show.rating.average }}</td>
-                        <td style="width: 500px;">
-                            <div [innerHTML]="ep.summary"></div>
+                        <td>{{ ep.show?.genres }}</td>
+                        <td>{{ ep.show?.network?.name }}</td>
+                        <td>{{ ep.show?.rating?.average }}</td>
+                        <td style="width: 450px;">
+                            <div [innerHTML]="ep.show.summary"></div>
                         </td>
                         <td *ngIf="isAuthenticated()==true">
-                            <button type="button" (click)="lookupShow(ep.show.id)" class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['./show-detail', ep.show.id ]" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
@@ -57,10 +84,11 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="row justify-content-center">
-                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="todayEpisodes.length">
-                </ngb-pagination>
-            </div>
+
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [collectionSize]="shows.length"
+                [boundaryLinks]="true"></ngb-pagination>
+            </ngb-pagination>
+
         </div>
     </div>
 </div>

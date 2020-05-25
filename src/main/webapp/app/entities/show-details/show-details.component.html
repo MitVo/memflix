@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="row">
+            <div class="card mb-3 col-3">
+                <img style="height: 300px; width: 100%; display: block;" src="{{show?.image?.medium}}" alt="Card image">
+            </div>
+            <div class="card mb-3 col-8">
+                <h3 class="card-header">{{show?.name}}</h3>
+                <div class="card-body">
+                    <h6 class="card-text">
+                        <div [innerHTML]="show?.summary"></div>
+                    </h6>
+                    <div class="form-group row">
+                        <label for="staticLang" class="col-sm-2 col-form-label"
+                            jhiTranslate="tvmaze.language">Language</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticLang"
+                                value="{{show?.language}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticSchedule" class="col-sm-2 col-form-label"
+                            jhiTranslate="tvmaze.schedule">Schedule</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticSchedule"
+                                value="{{show?.schedule?.time}} - {{show?.schedule?.days}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticNet" class="col-sm-2 col-form-label"
+                            jhiTranslate="tvmaze.network">Network</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticNet"
+                                value="{{show?.network?.name}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticRating" class="col-sm-2 col-form-label"
+                            jhiTranslate="tvmaze.rating">Rating</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticRating"
+                                value="{{show?.rating?.average}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticGenres" class="col-sm-2 col-form-label"
+                            jhiTranslate="tvmaze.genre">Genre</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticGenres"
+                                value="{{show?.genres}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="toggle-1" title="{{ 'tvmaze.cast' | translate }}">
+                <ng-template ngbPanelContent>
+                    <div class="row">
+                        <div *ngIf="cast?.length == 0">
+                            <h3>No cast found</h3>
+                        </div>
+                        
+                            <div class="card mb-3" *ngFor="let c of cast">
+                                <div class="card-body">
+                                    <img style="height: 190px; width: 100%; display: block;" src="{{c?.person?.image?.medium}}">
+                                    <p>{{ c?.person?.name }}</p>
+                                    <p>{{ c?.person?.birthday }}</p>
+                                    <p>{{ c?.character?.name }}</p>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="toggle-2" title="{{ 'tvmaze.seasons' | translate }}">
+                <ng-template ngbPanelContent>
+                    <div class="row">
+                        <div *ngIf="seasons?.length == 0">
+                            <h3>No seasons found</h3>
+                        </div>
+                        <div class="card mb-3" *ngFor="let se of seasons">
+                            <h3 class="card-header"><span jhiTranslate="tvmaze.season">Season</span> {{se?.number}}</h3>
+                            <div class="card-body">
+                                <div class="table-responsive" *ngIf="se?.episodes">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"><span jhiTranslate="tvmaze.number">Number</span>
+                                                </th>
+                                                <th scope="col"><span jhiTranslate="tvmaze.episode">Episode</span></th>
+                                                <th scope="col"><span jhiTranslate="tvmaze.airdate">Date</span></th>
+                                                <th scope="col"><span jhiTranslate="tvmaze.summary">Summary</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="se?.episodes">
+                                            <tr *ngFor="let epi of se?.episodes">
+                                                <td>{{ epi?.number }}</td>
+                                                <td>{{ epi?.name }}</td>
+                                                <td>{{ epi?.airdate | date:'mediumDate' }}</td>
+                                                <td>
+                                                    <div [innerHTML]="epi.summary"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+
+    </div>
+</div>

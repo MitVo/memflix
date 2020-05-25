@@ -2,6 +2,12 @@
 
 This application was generated using JHipster 6.8.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.8.0](https://www.jhipster.tech/documentation-archive/v6.8.0).
 
+Tools and other frameworks used:
+- Angular CLI 9.0
+- Spring Boot 2.2.5 RELEASE
+- Template from [Bootswatch Cyborg](https://bootswatch.com/cyborg/) .
+- [Liquidbase](https://www.liquibase.org/) 
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:

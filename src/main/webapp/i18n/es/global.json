@@ -98,7 +98,8 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Guardar",
-      "view": "Vista"
+      "view": "Vista",
+      "search": "Buscar"
     },
     "detail": {
       "field": "Campo",
